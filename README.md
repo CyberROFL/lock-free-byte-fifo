@@ -1,4 +1,4 @@
 lock-free-byte-fifo
 ===================
 
-Lock-free byte FIFO
+Lock-free implementation of byte FIFO.
