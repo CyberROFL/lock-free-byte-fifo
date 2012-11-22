@@ -13,7 +13,7 @@ public:
     {
     }
 
-    const ÑTestResult& Run(int nThreads)
+    const CTestResult& Run(int nThreads)
     {
         /*
             We create a single fifo with 'fifoSize' elements.

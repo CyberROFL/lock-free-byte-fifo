@@ -9,13 +9,13 @@ enum ErrorReason {
      ErrorAdditionalElements
 };
 
-class ÑTestResult
+class CTestResult
 {
     bool        _errorFlag;
     ErrorReason _errorReason;
 
 public:
-    ÑTestResult() : _errorFlag(false) {}
+    CTestResult() : _errorFlag(false) {}
 
     void SetError(ErrorReason reason)
     {

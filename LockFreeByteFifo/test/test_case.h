@@ -26,7 +26,7 @@ protected:
         uint32 threadId; // Not user for read test
     };
 
-    ÑTestResult _result;
+    CTestResult _result;
 
 public:
     CTestCase(uint32 fifoSize, const uint8* testData, uint32 testDataSize) :
@@ -38,7 +38,7 @@ public:
         assert (!(fifoSize % testDataSize));
     }
 
-    virtual const ÑTestResult& Run(int nThreads) = 0;
+    virtual const CTestResult& Run(int nThreads) = 0;
 
 protected:
     void RunAndWait(int nThreads,
