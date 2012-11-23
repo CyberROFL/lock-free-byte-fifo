@@ -15,11 +15,8 @@ int _tmain(int argc, _TCHAR* argv[])
     uint8 testData[testDataSize] = { 'a', 'b', 'c', 'd' };
 
     // Test
-    CReadTest  readTest (fifoSize, testData, testDataSize);
-    CWriteTest writeTest(fifoSize, testData, testDataSize);
-
-    readTest. Run(nReaders).Print();
-    writeTest.Run(nWriters).Print();
+    read_test (nReaders, fifoSize, testData, testDataSize);
+    write_test(nWriters, fifoSize, testData, testDataSize);
 
     return EXIT_SUCCESS;
 }

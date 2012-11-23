@@ -15,6 +15,12 @@
       <Filter>test</Filter>
     </ClCompile>
     <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="test\read_test.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="test\write_test.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\byte_fifo.h">
@@ -35,7 +41,7 @@
     <ClInclude Include="test\test_result.h">
       <Filter>test</Filter>
     </ClInclude>
-    <ClInclude Include="test\test_case.h">
+    <ClInclude Include="test\thread_data.h">
       <Filter>test</Filter>
     </ClInclude>
   </ItemGroup>

@@ -81,7 +81,7 @@
     <ClInclude Include="include\byte_fifo.h" />
     <ClInclude Include="include\i_byte_fifo.h" />
     <ClInclude Include="include\stdafx.h" />
-    <ClInclude Include="test\test_case.h" />
+    <ClInclude Include="test\thread_data.h" />
     <ClInclude Include="test\read_test.h" />
     <ClInclude Include="test\test_result.h" />
     <ClInclude Include="test\write_test.h" />
@@ -92,6 +92,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="test\read_test.cpp" />
+    <ClCompile Include="test\write_test.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
