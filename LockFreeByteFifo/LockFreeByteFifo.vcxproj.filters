@@ -29,9 +29,6 @@
     <ClInclude Include="include\i_byte_fifo.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="include\stdafx.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="test\read_test.h">
       <Filter>test</Filter>
     </ClInclude>
@@ -44,5 +41,6 @@
     <ClInclude Include="test\thread_data.h">
       <Filter>test</Filter>
     </ClInclude>
+    <ClInclude Include="stdafx.h" />
   </ItemGroup>
 </Project>
