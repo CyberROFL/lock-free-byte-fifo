@@ -1,6 +1,7 @@
 #include "stdafx.h"
 
 #include "read_test.h"
+#include "thread_data.h"
 #include "test_result.h"
 
 #include <iostream>
@@ -113,7 +114,7 @@ static DWORD WINAPI read_thread(LPVOID lParam)
     {
         assert (actualSize == data->testDataSize);
 
-        for (uint32 i = 0; i < data->testDataSize; ++i)
+        for (uint32 i = 0; i < actualSize; ++i)
             if (rblk[i] != data->testData[i])
                 data->errorFlag = true;
 

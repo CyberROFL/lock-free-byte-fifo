@@ -1,7 +1,7 @@
 #ifndef READTEST_H
 #define READTEST_H
 
-#include "thread_data.h"
+#include "byte_fifo.h"
 
 void read_test(int nThreads,
                uint32 fifoSize,

@@ -86,6 +86,8 @@ public:
 
     void WriteCommit(const uint8* blk, uint32 written)
     {
+        assert (written <= _size); // Must be less than fifo size
+
         uint32 spin_count = 1;
         while (blk != _tail)
         {
@@ -95,17 +97,7 @@ public:
                 ; // nop
         }
 
-        uint8* old_tail = _tail;
-        while (true)
-        {
-            uint8* initial_tail =
-                cas(&_tail, old_tail, increase(const_cast<uint8*>(blk), written));
-
-            if (initial_tail == old_tail)
-                return;
-
-            old_tail = initial_tail;
-        }
+        _tail = increase(const_cast<uint8*>(blk), written);
     }
 
     const uint8* Read(uint32 size, uint32& readSize)
@@ -148,6 +140,8 @@ public:
 
     void ReadFree(const uint8* blk, uint32 consumed)
     {
+        assert (consumed <= _size); // Must be less than fifo size
+
         uint32 spin_count = 1;
         while (blk != _head_alloc)
         {
@@ -157,25 +151,18 @@ public:
                 ; // nop
         }
 
-        uint8* old_head_alloc = _head_alloc;
-        while (true)
-        {
-            uint8* initial_head_alloc =
-                cas(&_head_alloc, old_head_alloc, increase(const_cast<uint8*>(blk), consumed));
-
-            if (initial_head_alloc == old_head_alloc)
-                return;
-
-            old_head_alloc = initial_head_alloc;
-        }
+        _head_alloc = increase(const_cast<uint8*>(blk), consumed);
     }
 
     uint32 GetDataSize() const
     {
-        if (_tail >= _head)
-            return (_tail - _head);
+        uint8* old_head = _head;
+        uint8* old_tail = _tail;
+
+        if (old_tail >= old_head)
+            return (old_tail - old_head);
         else
-            return (_size - (_head - _tail - 1));
+            return (_size - (old_head - old_tail - 1));
     }
 
 private:

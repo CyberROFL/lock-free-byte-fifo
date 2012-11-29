@@ -12,7 +12,7 @@ int _tmain(int argc, _TCHAR* argv[])
     const int nWriters           = 4;
 
     const uint32 testDataSize    = 4;
-    uint8 testData[testDataSize] = { 'a', 'b', 'c', 'd' };
+    uint8 testData[testDataSize] = { 1, 2, 3, 4 };
 
     // Test
     read_test (nReaders, fifoSize, testData, testDataSize);

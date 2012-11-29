@@ -1,6 +1,7 @@
 #include "stdafx.h"
 
 #include "write_test.h"
+#include "thread_data.h"
 #include "test_result.h"
 
 #include <iostream>
@@ -76,7 +77,7 @@ void write_test(int nThreads,
         assert (actualSize == testDataSize);
 
         uint32 threadId = (rblk[0] - testData[0]);
-        for (uint32 i = 1; i < testDataSize; ++i)
+        for (uint32 i = 1; i < actualSize; ++i)
         {
             if ((rblk[i] - testData[i]) != threadId)
                 result.SetError(ErrorInvalidData);
@@ -118,8 +119,8 @@ static DWORD WINAPI write_thread(LPVOID lParam)
     {
         assert (actualSize == data->testDataSize);
 
-        uint8* testData = new uint8[data->testDataSize];
-        for (uint32 i = 0; i < data->testDataSize; ++i)
+        uint8* testData = new uint8[actualSize];
+        for (uint32 i = 0; i < actualSize; ++i)
             testData[i] = data->testData[i] + data->threadId;
 
         memcpy_s(wblk, actualSize, testData, data->testDataSize);
